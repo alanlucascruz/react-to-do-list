@@ -1,0 +1,205 @@
+/* Tasks */
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tasks .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.tasks .item:nth-child(odd) {
+  background-color: #36363e;
+}
+
+.tasks .content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.tasks .title-wrap {
+  display: flex;
+  align-items: center;
+  flex: 3;
+}
+
+.tasks .priority {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+  font-size: 12px;
+  height: 28px;
+  width: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+}
+
+.tasks .priority.low {
+  color: #00ab64;
+  background-color: #93d6ba;
+}
+
+.tasks .priority.medium {
+  color: #e0bb00;
+  background-color: #fbf7e4;
+}
+
+.tasks .priority.high {
+  color: #dc093e;
+  background-color: #eb98ad;
+}
+
+.tasks .title {
+  max-width: 360px;
+  margin-right: 24px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tasks .status-wrap {
+  display: flex;
+  flex: 2;
+}
+
+.tasks .status {
+  flex: 1;
+  min-width: 140px;
+}
+
+.tasks .status .badge {
+  display: inline;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 12px;
+  margin-right: 24px;
+  border-radius: 8px;
+}
+
+.tasks .status .badge.done {
+  color: #00ab64;
+  background-color: #93d6ba;
+}
+
+.tasks .status .badge.progress {
+  color: #027dda;
+  background-color: #74b0df;
+}
+
+.tasks .status .badge.pending {
+  color: #8f919c;
+  background-color: #3f4049;
+}
+
+.tasks .category {
+  flex: 1;
+  min-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tasks .category i {
+  margin-right: 8px;
+}
+
+.tasks .date {
+  flex: 1;
+  min-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tasks .date i {
+  margin-right: 4px;
+}
+
+.tasks .options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8f919c;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.tasks .options:hover {
+  background-color: #3f4049;
+}
+
+@media (max-width: 1600px) {
+  .tasks .title-wrap {
+    flex: 2;
+  }
+
+  .tasks .title {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 992px) {
+  .tasks .title {
+    max-width: 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tasks .content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tasks .item {
+    padding: 8px 0 16px 0;
+    border-bottom: 1px solid #3f4049;
+    border-radius: 0;
+  }
+
+  .tasks .item:nth-child(odd) {
+    background-color: transparent;
+  }
+
+  .tasks .priority {
+    margin-right: 16px;
+  }
+
+  .tasks .title {
+    flex: auto;
+    max-width: 300px;
+  }
+
+  .tasks .status,
+  .tasks .category {
+    flex: auto;
+    margin-top: 16px;
+    min-width: auto;
+  }
+
+  .tasks .status .badge {
+    padding: 4px 8px;
+    margin-right: 16px;
+  }
+
+  .tasks .date {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .tasks .title {
+    max-width: 180px;
+  }
+}

@@ -1,0 +1,18 @@
+.btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-blue {
+  background-color: #0063af;
+}
+
+.btn-gray {
+  background-color: #44454f;
+}

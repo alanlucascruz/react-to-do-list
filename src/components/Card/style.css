@@ -1,0 +1,29 @@
+.card {
+  background-color: #2e2f36;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.card .card-title {
+  margin-bottom: 24px;
+}
+
+.card .card-title h2 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.card .card-title h4 {
+  color: #838590;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+  margin-top: 4px;
+}
+
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+}
