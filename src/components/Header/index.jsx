@@ -1,9 +1,7 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { toggleSidebarMenu } from "../../store/slices/sidebarMenuSlice";
-import Dropdown from "../Dropdown";
+import HeaderDropdown from "./HeaderDropdown";
 import "./style.css";
-import { Fragment } from "react";
 
 function Header({ title }) {
   const dispatch = useDispatch();
@@ -20,27 +18,7 @@ function Header({ title }) {
       <h2 className="title">{title}</h2>
 
       <div className="options">
-        <Dropdown
-          Base={() => (
-            <div className="user">
-              <h4>Alan Cruz</h4>
-              <i className="bi bi-person-fill"></i>
-            </div>
-          )}
-          Content={() => (
-            <Fragment>
-              <Link to="/">
-                <i className="bi bi-person"></i> Editar Perfil
-              </Link>
-              <Link to="/">
-                <i className="bi bi-lock"></i> Alterar Senha
-              </Link>
-              <Link to="/">
-                <i className="bi bi-box-arrow-right"></i> Sair
-              </Link>
-            </Fragment>
-          )}
-        />
+        <HeaderDropdown />
       </div>
     </div>
   );

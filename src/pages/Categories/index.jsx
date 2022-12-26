@@ -39,7 +39,6 @@ function Categories() {
         Body={() => (
           <div className="form-container">
             <Input label="Descrição" placeholder="Informe a descrição..." />
-
             <RadioColor />
           </div>
         )}
