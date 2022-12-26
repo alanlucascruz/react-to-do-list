@@ -1,18 +1,18 @@
-#tasks .search-container {
+#categories .search-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
   gap: 8px;
 }
 
-#tasks .form-container {
+#categories .form-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
 @media (max-width: 1366px) {
-  #tasks .container {
+  #categories .container {
     width: 100%;
   }
 }

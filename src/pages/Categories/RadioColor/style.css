@@ -1,0 +1,50 @@
+.radio-color {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-color .radio-color-label {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.radio-color-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 300px;
+}
+
+.radio-color-item label {
+  display: block;
+  position: relative;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+}
+
+.radio-color-item input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-color-item span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 36px;
+  width: 36px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.radio-color-item label:hover span {
+  opacity: 0.8;
+}
+
+.radio-color-item input:checked ~ span {
+  border: 3px solid #ffffff;
+  transform: scale(1.1);
+}

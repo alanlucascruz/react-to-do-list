@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-import Dropdown from "../Dropdown";
+import TaskDropdown from "./TaskDropdown";
 import "./style.css";
 
-function Tasks({ showDate = false }) {
+function Tasks({ showDate = false, edit = false }) {
   const data = [
     {
       priority: "low",
@@ -83,24 +82,18 @@ function Tasks({ showDate = false }) {
       {data.map((item, index) => (
         <div className="item" key={index}>
           <div className="content">
-            <div className="title-wrap">
+            <div className="mobile-wrap">
               <Priority priority={item.priority} />
-
               <div className="title">{item.description}</div>
             </div>
 
-            <div className="status-wrap">
-              <div className="status">
-                <Status status={item.status} />
-              </div>
+            <div className="status">
+              <Status status={item.status} />
+            </div>
 
-              <div className="category">
-                <i
-                  className="bi bi-tags-fill"
-                  style={{ color: item.color }}
-                ></i>
-                {item.category}
-              </div>
+            <div className="category">
+              <i className="bi bi-tags-fill" style={{ color: item.color }}></i>
+              {item.category}
             </div>
 
             {showDate && (
@@ -110,27 +103,7 @@ function Tasks({ showDate = false }) {
             )}
           </div>
 
-          <Dropdown>
-            <div className="options">
-              <i className="bi bi-three-dots-vertical"></i>
-            </div>
-
-            <div
-              className={`dropdown-content ${
-                index === data.length - 1 && "dropdown-content-top"
-              }`}
-            >
-              <Link>
-                <i className="bi bi-circle"></i> Pendente
-              </Link>
-              <Link>
-                <i className="bi bi-check2"></i> Em Progresso
-              </Link>
-              <Link>
-                <i className="bi bi-check2-all"></i> Completo
-              </Link>
-            </div>
-          </Dropdown>
+          <TaskDropdown edit={edit} />
         </div>
       ))}
     </div>

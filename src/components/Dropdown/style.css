@@ -17,8 +17,9 @@
   z-index: -1;
 }
 
-.dropdown .dropdown-content-top {
-  bottom: 32px;
+.dropdown .dropdown-top {
+  bottom: 0px;
+  right: 32px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -42,4 +43,10 @@
   display: inline-block;
   margin-right: 8px;
   width: 20px;
+}
+
+.dropdown .dropdown-divider {
+  height: 1px;
+  background-color: #7b7d87;
+  margin: 6px 8px;
 }

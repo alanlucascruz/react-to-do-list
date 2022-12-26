@@ -1,4 +1,3 @@
-/* Tasks */
 .tasks {
   display: flex;
   flex-direction: column;
@@ -24,7 +23,7 @@
   flex: 1;
 }
 
-.tasks .title-wrap {
+.tasks .mobile-wrap {
   display: flex;
   align-items: center;
   flex: 3;
@@ -60,15 +59,9 @@
 .tasks .title {
   max-width: 360px;
   margin-right: 24px;
-  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.tasks .status-wrap {
-  display: flex;
-  flex: 2;
 }
 
 .tasks .status {
@@ -141,12 +134,8 @@
 }
 
 @media (max-width: 1600px) {
-  .tasks .title-wrap {
-    flex: 2;
-  }
-
   .tasks .title {
-    max-width: 180px;
+    max-width: 320px;
   }
 }
 
@@ -163,7 +152,7 @@
   }
 
   .tasks .item {
-    padding: 8px 0 16px 0;
+    padding: 16px 0;
     border-bottom: 1px solid #3f4049;
     border-radius: 0;
   }
@@ -182,17 +171,7 @@
   }
 
   .tasks .status,
-  .tasks .category {
-    flex: auto;
-    margin-top: 16px;
-    min-width: auto;
-  }
-
-  .tasks .status .badge {
-    padding: 4px 8px;
-    margin-right: 16px;
-  }
-
+  .tasks .category,
   .tasks .date {
     display: none;
   }

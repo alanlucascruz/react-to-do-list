@@ -1,15 +1,14 @@
-import { Fragment } from "react";
 import Header from "../../components/Header";
 import Content from "../../components/Content";
 import Card from "../../components/Card";
 import ChartLine from "./ChartLine";
 import Categories from "./Categories";
-import Tasks from "../../components/Tasks";
+import TasksList from "../../components/TaskList";
 import "./style.css";
 
 function Dashboard() {
   return (
-    <Fragment>
+    <div id="dashboard">
       <Header title="Dashboard" />
 
       <Content>
@@ -22,7 +21,7 @@ function Dashboard() {
             </Card>
 
             <Card title="Próximas Tarefas">
-              <Tasks />
+              <TasksList />
             </Card>
           </div>
 
@@ -33,7 +32,7 @@ function Dashboard() {
           </div>
         </div>
       </Content>
-    </Fragment>
+    </div>
   );
 }
 

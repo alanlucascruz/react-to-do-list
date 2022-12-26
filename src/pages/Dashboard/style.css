@@ -1,37 +1,37 @@
-.row {
+#dashboard .row {
   display: flex;
   flex: 1;
   gap: 24px;
 }
 
-.col {
+#dashboard .col {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.col:nth-child(1) {
-  flex: 2;
+#dashboard .col:nth-child(1) {
+  flex: 2.5;
 }
 
-.col:nth-child(2) {
+#dashboard .col:nth-child(2) {
   flex: 1;
 }
 
 /* Chart */
-.chart-container {
+#dashboard .chart-container {
   position: relative;
   height: 376px;
 }
 
 /* Categories */
-.categories {
+#dashboard .categories {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.categories .card {
+#dashboard .categories .card {
   color: #ffffff;
   background-color: #36373f;
   padding: 16px;
@@ -40,48 +40,48 @@
   border-radius: 4px;
 }
 
-.categories .card h4 {
+#dashboard .categories .card h4 {
   color: #838590;
   margin: 4px 0;
   font-weight: 400;
   font-size: 12px;
 }
 
-.categories .card h2 {
+#dashboard .categories .card h2 {
   margin: 0;
   font-weight: 500;
   font-size: 18px;
 }
 
-.categories .progress-bar-container {
+#dashboard .categories .progress-bar-container {
   background-color: #6e6f79;
   margin-top: 16px;
   height: 4px;
   border-radius: 2px;
 }
 
-.categories .progress-bar {
+#dashboard .categories .progress-bar {
   height: 100%;
   border-radius: 2px;
 }
 
 @media (max-width: 1200px) {
-  .row {
+  #dashboard .row {
     flex-direction: column;
   }
 
-  .categories {
+  #dashboard .categories {
     flex-direction: row;
     flex-wrap: wrap;
   }
 
-  .categories .card {
+  #dashboard .categories .card {
     flex: 300px;
   }
 }
 
 @media (max-width: 768px) {
-  .chart-container {
+  #dashboard .chart-container {
     margin: -12px;
   }
 }

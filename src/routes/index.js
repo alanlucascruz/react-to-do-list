@@ -4,6 +4,7 @@ import SidebarMenu from "../components/SidebarMenu";
 
 import Dashboard from "../pages/Dashboard";
 import Tasks from "../pages/Tasks";
+import Categories from "../pages/Categories";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/tasks",
         element: <Tasks />,
+      },
+      {
+        path: "/categories",
+        element: <Categories />,
       },
     ],
   },
