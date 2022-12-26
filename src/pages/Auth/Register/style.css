@@ -65,15 +65,15 @@
 }
 
 @media (max-width: 768px) {
-  #login {
+  #register {
     padding: 16px;
   }
 
-  #login .card {
+  #register .card {
     width: 100%;
   }
 
-  #login form {
+  #register form {
     padding: 48px 0;
   }
 }

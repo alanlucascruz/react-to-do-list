@@ -25,8 +25,8 @@ function CategoryList() {
     },
   ];
 
-  return data.map((item) => (
-    <div className="item">
+  return data.map((item, index) => (
+    <div className="item" key={index}>
       <div className="content">
         <div className="color" style={{ backgroundColor: item.color }}></div>
         <div className="title">{item.description}</div>
