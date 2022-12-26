@@ -17,7 +17,7 @@ function Categories() {
 
   return (
     <div id="categories">
-      <Header title="Tarefas" />
+      <Header title="Categorias" />
 
       <Content>
         <div className="container">

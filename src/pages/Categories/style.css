@@ -1,3 +1,7 @@
+#categories .container {
+  width: 600px;
+}
+
 #categories .search-container {
   display: flex;
   justify-content: space-between;
@@ -11,7 +15,7 @@
   gap: 24px;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 992px) {
   #categories .container {
     width: 100%;
   }
