@@ -15,7 +15,7 @@ function HeaderDropdown() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  const { token, user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (!token) {
@@ -28,7 +28,7 @@ function HeaderDropdown() {
       <Dropdown
         Base={() => (
           <div className="user">
-            <h4>Alan Cruz</h4>
+            <h4>{user.name}</h4>
             <i className="bi bi-person-fill"></i>
           </div>
         )}
