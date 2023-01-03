@@ -1,4 +1,9 @@
 import { Fragment, useState } from "react";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoryRequest } from "../../store/slices/categorySlice";
+
 import Content from "../../components/Content";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
@@ -8,10 +13,18 @@ import Modal from "../../components/Modal";
 import Input from "../../components/FormControl/Input";
 import CategoryList from "./CategoryList";
 import RadioColor from "./RadioColor";
+
 import "./style.css";
 
 function Categories() {
   const [showAddModal, setShowAddModal] = useState(false);
+
+  const dispatch = useDispatch();
+  const { data, status } = useSelector((state) => state.category);
+
+  useEffect(() => {
+    dispatch(getCategoryRequest("loading"));
+  }, [dispatch]);
 
   const toggleAddModal = () => setShowAddModal(!showAddModal);
 
@@ -19,23 +32,27 @@ function Categories() {
     <div id="categories">
       <Header title="Categorias" />
 
-      <Content>
-        <div className="container">
-          <Card>
-            <div className="search-container">
-              <InputSearch />
-              <Button text="Adicionar" onClick={toggleAddModal} />
-            </div>
+      {status === "loading" ? (
+        <div className="loading-message">Carregando...</div>
+      ) : (
+        <Content>
+          <div className="container">
+            <Card>
+              <div className="search-container">
+                <InputSearch />
+                <Button text="Adicionar" onClick={toggleAddModal} />
+              </div>
 
-            <CategoryList />
-          </Card>
-        </div>
-      </Content>
+              <CategoryList data={data} />
+            </Card>
+          </div>
+        </Content>
+      )}
 
       <Modal
         show={showAddModal}
         toggle={toggleAddModal}
-        title={"Categoria"}
+        title="Categoria"
         Body={() => (
           <div className="form-container">
             <Input label="Descrição" placeholder="Informe a descrição..." />

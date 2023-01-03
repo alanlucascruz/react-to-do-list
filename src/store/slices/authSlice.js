@@ -57,7 +57,7 @@ export const auth = createSlice({
   initialState: {
     user: JSON.parse(localStorage.getItem("@user")),
     token: localStorage.getItem("@token"),
-    status: "", // idle, loading, succeeded, failed
+    status: "idle", // idle, loading, succeeded, failed
     error: "",
   },
   reducers: {
