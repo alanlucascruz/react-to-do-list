@@ -1,6 +1,7 @@
 .input-container {
   display: flex;
   flex-direction: column;
+  margin-bottom: 16px;
 }
 
 .input-container label {
@@ -24,4 +25,10 @@
 
 .input-container input::placeholder {
   color: #72747e;
+}
+
+.input-container .input-error {
+  color: #ff6b56;
+  font-size: 12px;
+  margin-top: 4px;
 }

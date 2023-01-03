@@ -1,8 +1,10 @@
-import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Dropdown from "../Dropdown";
 import ProfileModal from "./ProfileModal";
 import PasswordModal from "./PasswordModal";
+import { signOut } from "../../store/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function HeaderDropdown() {
   const [showProfileModal, setShowProfileModal] = useState(false);
@@ -10,6 +12,16 @@ function HeaderDropdown() {
 
   const toggleProfileModal = () => setShowProfileModal(!showProfileModal);
   const togglePasswordModal = () => setShowPasswordModal(!showPasswordModal);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/auth");
+    }
+  }, [token, navigate]);
 
   return (
     <Fragment>
@@ -28,7 +40,7 @@ function HeaderDropdown() {
             <Link onClick={togglePasswordModal}>
               <i className="bi bi-lock"></i> Alterar Senha
             </Link>
-            <Link to="/auth">
+            <Link onClick={() => dispatch(signOut())}>
               <i className="bi bi-box-arrow-right"></i> Sair
             </Link>
           </Fragment>

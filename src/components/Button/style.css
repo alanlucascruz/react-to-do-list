@@ -16,3 +16,7 @@
 .btn-gray {
   background-color: #44454f;
 }
+
+.btn:disabled {
+  background-color: #5b5b5d;
+}

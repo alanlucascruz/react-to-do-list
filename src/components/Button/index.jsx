@@ -1,8 +1,13 @@
 import "./style.css";
 
-function Button({ text, color = "blue", onClick }) {
+function Button({ type, text, color, disabled, onClick }) {
   return (
-    <button className={`btn btn-${color}`} onClick={onClick}>
+    <button
+      type={type || "button"}
+      className={`btn btn-${color || "blue"}`}
+      disabled={disabled || false}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
