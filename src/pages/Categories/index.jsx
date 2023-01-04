@@ -1,6 +1,4 @@
-import { Fragment, useState } from "react";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCategoryRequest,
@@ -12,10 +10,8 @@ import Header from "../../components/Header";
 import Card from "../../components/Card";
 import InputSearch from "../../components/InputSearch";
 import Button from "../../components/Button";
-import Modal from "../../components/Modal";
-import Input from "../../components/FormControl/Input";
 import CategoryList from "./CategoryList";
-import RadioColor from "./RadioColor";
+import CategoryModal from "./CategoryModal";
 
 import "./style.css";
 
@@ -62,23 +58,7 @@ function Categories() {
         </div>
       </Content>
 
-      <Modal
-        show={showAddModal}
-        toggle={toggleAddModal}
-        title="Categoria"
-        Body={() => (
-          <div className="form-container">
-            <Input label="Descrição" placeholder="Informe a descrição..." />
-            <RadioColor />
-          </div>
-        )}
-        Footer={() => (
-          <Fragment>
-            <Button text="Cancelar" color="gray" onClick={toggleAddModal} />
-            <Button text="Salvar" />
-          </Fragment>
-        )}
-      />
+      <CategoryModal show={showAddModal} toggle={toggleAddModal} />
     </div>
   );
 }
