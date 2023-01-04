@@ -5,9 +5,9 @@ import Card from "../../components/Card";
 import TaskList from "../../components/TaskList";
 import InputSearch from "../../components/InputSearch";
 import Button from "../../components/Button";
+import TaskModal from "./TaskModal";
 
 import "./style.css";
-import TaksModal from "./TaskModal";
 
 function Tasks() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -31,7 +31,7 @@ function Tasks() {
         </div>
       </Content>
 
-      <TaksModal toggle={toggleAddModal} show={showAddModal} />
+      <TaskModal toggle={toggleAddModal} show={showAddModal} />
     </div>
   );
 }

@@ -14,7 +14,7 @@ function Dashboard() {
       <Content>
         <div className="row">
           <div className="col">
-            <Card title="Produtividade Diária" subtitle="Últimos 15 dias">
+            <Card title="Produtividade Diária" subtitle="Últimos 20 dias">
               <div className="chart-container">
                 <ChartLine />
               </div>

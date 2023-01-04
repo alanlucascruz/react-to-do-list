@@ -4,6 +4,12 @@
   gap: 24px;
 }
 
+.loading {
+  color: #8f919c;
+  font-size: 14px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   #content {
     padding: 16px;

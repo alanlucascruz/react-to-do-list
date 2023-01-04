@@ -1,15 +1,10 @@
 import "./style.css";
 
-function Content({ children, flexDirection }) {
-  return (
-    <div
-      id="content"
-      style={{
-        flexDirection: flexDirection || "row",
-      }}
-    >
-      {children}
-    </div>
+function Content({ children, loading }) {
+  return loading ? (
+    <div className="loading">Carregando...</div>
+  ) : (
+    <div id="content">{children}</div>
   );
 }
 

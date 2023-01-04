@@ -1,10 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "../../store/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 import Dropdown from "../Dropdown";
 import ProfileModal from "./ProfileModal";
 import PasswordModal from "./PasswordModal";
-import { signOut } from "../../store/slices/authSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 function HeaderDropdown() {
   const [showProfileModal, setShowProfileModal] = useState(false);

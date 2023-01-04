@@ -4,7 +4,7 @@ import Input from "../../components/FormControl/Input";
 import Select from "../../components/FormControl/Select";
 import Button from "../../components/Button";
 
-function TaksModal({ show, toggle }) {
+function TaskModal({ show, toggle }) {
   return (
     <Modal
       show={show}
@@ -58,4 +58,4 @@ function TaksModal({ show, toggle }) {
   );
 }
 
-export default TaksModal;
+export default TaskModal;
