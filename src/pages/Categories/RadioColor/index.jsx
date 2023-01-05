@@ -1,6 +1,6 @@
 import "./style.css";
 
-function RadioColor() {
+function RadioColor({ checked, onChange, showError, errorMessage }) {
   const colors = [
     "#0F8DED", // blue
     "#00C1FD", // light blue
@@ -23,11 +23,19 @@ function RadioColor() {
       <div className="radio-color-item">
         {colors.map((color, index) => (
           <label key={index}>
-            <input type="radio" name="radio-color" value={color} />
+            <input
+              type="radio"
+              name="radio-color"
+              value={color}
+              checked={checked === color}
+              onChange={onChange}
+            />
             <span style={{ backgroundColor: color }}></span>
           </label>
         ))}
       </div>
+
+      {showError && <div className="radio-error">{errorMessage}</div>}
     </div>
   );
 }

@@ -48,3 +48,9 @@
   border: 3px solid #ffffff;
   transform: scale(1.1);
 }
+
+.radio-color .radio-error {
+  color: #ff6b56;
+  font-size: 12px;
+  margin-top: 8px;
+}

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, memo, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "../../store/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,4 +54,4 @@ function HeaderDropdown() {
   );
 }
 
-export default HeaderDropdown;
+export default memo(HeaderDropdown);

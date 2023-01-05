@@ -9,7 +9,7 @@ function PasswordModal({ show, toggle }) {
       show={show}
       toggle={toggle}
       title="Alterar Senha"
-      Body={() => (
+      body={
         <div className="form-container">
           <Input
             label="Antiga Senha"
@@ -29,13 +29,13 @@ function PasswordModal({ show, toggle }) {
             type="password"
           />
         </div>
-      )}
-      Footer={() => (
+      }
+      footer={
         <Fragment>
           <Button text="Cancelar" color="gray" onClick={toggle} />
           <Button text="Salvar" />
         </Fragment>
-      )}
+      }
     />
   );
 }

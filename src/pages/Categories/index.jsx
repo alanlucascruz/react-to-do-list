@@ -25,7 +25,9 @@ function Categories() {
     dispatch(getCategoryRequest("loading"));
   }, [dispatch]);
 
-  const toggleAddModal = () => setShowAddModal(!showAddModal);
+  const toggleAddModal = () => {
+    setShowAddModal(!showAddModal);
+  };
 
   const onFilter = (e) => {
     e.preventDefault();

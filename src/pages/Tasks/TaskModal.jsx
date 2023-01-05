@@ -1,18 +1,25 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Modal from "../../components/Modal";
 import Input from "../../components/FormControl/Input";
 import Select from "../../components/FormControl/Select";
 import Button from "../../components/Button";
 
 function TaskModal({ show, toggle }) {
+  const [description, setDescription] = useState("");
+
   return (
     <Modal
       show={show}
       toggle={toggle}
       title="Tarefa"
-      Body={() => (
+      body={
         <div className="form-container">
-          <Input label="Descrição" placeholder="Informe a descrição..." />
+          <Input
+            label="Descrição"
+            placeholder="Informe a descrição..."
+            value={description}
+            setValue={(e) => setDescription(e.target.value)}
+          />
 
           <Select
             label="Categoria"
@@ -47,13 +54,13 @@ function TaskModal({ show, toggle }) {
             placeholder="Informe a data..."
           />
         </div>
-      )}
-      Footer={() => (
+      }
+      footer={
         <Fragment>
           <Button text="Cancelar" color="gray" onClick={toggle} />
           <Button text="Salvar" />
         </Fragment>
-      )}
+      }
     />
   );
 }

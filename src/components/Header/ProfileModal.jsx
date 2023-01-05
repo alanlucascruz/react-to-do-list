@@ -9,7 +9,7 @@ function ProfileModal({ show, toggle }) {
       show={show}
       toggle={toggle}
       title="Editar Perfil"
-      Body={() => (
+      body={
         <div className="form-container">
           <Input label="Nome" placeholder="Insira o seu nome" />
           <Input
@@ -18,13 +18,13 @@ function ProfileModal({ show, toggle }) {
             type="email"
           />
         </div>
-      )}
-      Footer={() => (
+      }
+      footer={
         <Fragment>
           <Button text="Cancelar" color="gray" onClick={toggle} />
           <Button text="Salvar" />
         </Fragment>
-      )}
+      }
     />
   );
 }
