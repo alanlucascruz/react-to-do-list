@@ -1,13 +1,13 @@
 import { Fragment } from "react";
 import "./style.css";
 
-function Dropdown({ Base, Content, top = false }) {
+function Dropdown({ base, content, top = false }) {
   return (
     <Fragment>
       <div className="dropdown">
-        <Base />
+        {base}
         <div className={`dropdown-content ${top && "dropdown-top"}`}>
-          <Content />
+          {content}
         </div>
       </div>
     </Fragment>

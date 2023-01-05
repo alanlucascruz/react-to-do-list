@@ -2,24 +2,24 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../../../components/Dropdown";
 
-function CategoryDropdown() {
+function CategoryDropdown({ onEdit, onDelete }) {
   return (
     <Dropdown
-      Base={() => (
+      base={
         <div className="options">
           <i className="bi bi-three-dots-vertical"></i>
         </div>
-      )}
-      Content={() => (
+      }
+      content={
         <Fragment>
-          <Link>
+          <Link onClick={onEdit}>
             <i className="bi bi-pencil-square"></i> Editar
           </Link>
-          <Link>
+          <Link onClick={onDelete}>
             <i className="bi bi-trash"></i> Excluir
           </Link>
         </Fragment>
-      )}
+      }
     />
   );
 }

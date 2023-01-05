@@ -16,12 +16,16 @@ export const getCategoryRequest = (status) => async (dispatch, getState) => {
 export const postCategoryRequest = (data) => async (dispatch) => {
   dispatch(setStatus("sending"));
 
-  console.log(data);
-
   const response = await api.post("/categories", data);
 
   dispatch(postCategorySuccess(response.data));
   dispatch(setStatus("succeeded"));
+};
+
+export const deleteCategoryRequest = (id) => async (dispatch) => {
+  await api.delete(`/categories/${id}`);
+
+  dispatch(deleteCategorySuccess(id));
 };
 
 export const category = createSlice({
@@ -36,8 +40,14 @@ export const category = createSlice({
       state.data = action.payload;
     },
     postCategorySuccess: (state, action) => {
-      // state.data = [action.payload, ...state.data];
       state.data.unshift(action.payload);
+    },
+    deleteCategorySuccess: (state, action) => {
+      const { data } = state;
+
+      const index = data.findIndex((item) => item._id === action.payload);
+
+      data.splice(index, 1);
     },
     setStatus: (state, action) => {
       state.status = action.payload;
@@ -48,7 +58,12 @@ export const category = createSlice({
   },
 });
 
-export const { getCategorySuccess, postCategorySuccess, setStatus, setFilter } =
-  category.actions;
+export const {
+  getCategorySuccess,
+  postCategorySuccess,
+  deleteCategorySuccess,
+  setStatus,
+  setFilter,
+} = category.actions;
 
 export default category.reducer;

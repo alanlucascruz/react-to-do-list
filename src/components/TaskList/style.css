@@ -152,13 +152,7 @@
   }
 
   .tasks .item {
-    padding: 16px 0;
-    border-bottom: 1px solid #3f4049;
-    border-radius: 0;
-  }
-
-  .tasks .item:nth-child(odd) {
-    background-color: transparent;
+    padding: 12px 16px;
   }
 
   .tasks .priority {

@@ -27,13 +27,13 @@ function HeaderDropdown() {
   return (
     <Fragment>
       <Dropdown
-        Base={() => (
+        base={
           <div className="user">
             <h4>{user.name}</h4>
             <i className="bi bi-person-fill"></i>
           </div>
-        )}
-        Content={() => (
+        }
+        content={
           <Fragment>
             <Link onClick={toggleProfileModal}>
               <i className="bi bi-person"></i> Editar Perfil
@@ -45,7 +45,7 @@ function HeaderDropdown() {
               <i className="bi bi-box-arrow-right"></i> Sair
             </Link>
           </Fragment>
-        )}
+        }
       />
 
       <ProfileModal show={showProfileModal} toggle={toggleProfileModal} />

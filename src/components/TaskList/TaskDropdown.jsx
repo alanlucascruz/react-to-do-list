@@ -5,12 +5,12 @@ import Dropdown from "../Dropdown";
 function TaskDropdown({ edit }) {
   return (
     <Dropdown
-      Base={() => (
+      base={
         <div className="options">
           <i className="bi bi-three-dots-vertical"></i>
         </div>
-      )}
-      Content={() => (
+      }
+      content={
         <Fragment>
           {edit && (
             <Fragment>
@@ -33,7 +33,7 @@ function TaskDropdown({ edit }) {
             <i className="bi bi-check2-all"></i> Completo
           </Link>
         </Fragment>
-      )}
+      }
       top={true}
     />
   );
