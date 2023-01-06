@@ -1,13 +1,16 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Modal from "../../components/Modal";
 import Input from "../../components/FormControl/Input";
 import RadioColor from "./RadioColor";
 import Button from "../../components/Button";
-import { postCategoryRequest } from "../../store/slices/categorySlice";
+import {
+  postCategoryRequest,
+  putCategoryRequest,
+} from "../../store/slices/categorySlice";
 
-function CategoryModal({ show, toggle }) {
+function CategoryModal({ show, toggle, editItem }) {
   const [description, setDescription] = useState("");
   const [color, setColor] = useState("");
   const [triedToSubmit, setTriedToSubmit] = useState(false);
@@ -20,9 +23,15 @@ function CategoryModal({ show, toggle }) {
 
     if (!(description && color)) return;
 
-    dispatch(postCategoryRequest({ description, color }));
+    const data = { description, color };
 
-    resetForm();
+    if (editItem) {
+      const { _id: id } = editItem;
+      dispatch(putCategoryRequest(id, data));
+    } else {
+      dispatch(postCategoryRequest(data));
+    }
+
     toggle();
   };
 
@@ -31,6 +40,15 @@ function CategoryModal({ show, toggle }) {
     setColor("");
     setTriedToSubmit(false);
   };
+
+  useEffect(() => {
+    resetForm();
+
+    if (editItem) {
+      setDescription(editItem.description);
+      setColor(editItem.color);
+    }
+  }, [editItem, toggle]);
 
   return (
     <Modal
@@ -59,11 +77,7 @@ function CategoryModal({ show, toggle }) {
       footer={
         <Fragment>
           <Button text="Cancelar" color="gray" onClick={toggle} />
-          <Button
-            text={status === "sending" ? "Aguarde..." : "Salvar"}
-            disabled={status === "sending"}
-            onClick={onSubmit}
-          />
+          <Button text="Salvar" onClick={onSubmit} />
         </Fragment>
       }
     />

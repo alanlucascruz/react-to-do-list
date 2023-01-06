@@ -1,41 +1,30 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCategoryRequest,
-  setFilter,
-} from "../../store/slices/categorySlice";
+import { getCategoryRequest } from "../../store/slices/categorySlice";
 
 import Content from "../../components/Content";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
-import InputSearch from "../../components/InputSearch";
-import Button from "../../components/Button";
 import CategoryList from "./CategoryList";
 import CategoryModal from "./CategoryModal";
+import Search from "./Search";
 
 import "./style.css";
 
 function Categories() {
-  const [showAddModal, setShowAddModal] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [editItem, setEditItem] = useState(null);
 
   const dispatch = useDispatch();
-  const { data, status, filter } = useSelector((state) => state.category);
+  const { status } = useSelector((state) => state.category);
 
   useEffect(() => {
     dispatch(getCategoryRequest("loading"));
   }, [dispatch]);
 
-  const toggleAddModal = () => {
-    setShowAddModal(!showAddModal);
-  };
-
-  const onFilter = (e) => {
-    e.preventDefault();
-    dispatch(getCategoryRequest("filtering"));
-  };
-
-  const setFilterValue = (e) => {
-    dispatch(setFilter(e.target.value));
+  const toggleFormModal = (editItem = null) => {
+    setEditItem(editItem);
+    setShowFormModal(!showFormModal);
   };
 
   return (
@@ -45,22 +34,17 @@ function Categories() {
       <Content loading={status === "loading"}>
         <div className="container">
           <Card>
-            <div className="search-container">
-              <form onSubmit={(e) => onFilter(e)}>
-                <InputSearch
-                  value={filter}
-                  setValue={(e) => setFilterValue(e)}
-                />
-              </form>
-              <Button text="Adicionar" onClick={toggleAddModal} />
-            </div>
-
-            <CategoryList data={data} />
+            <Search toggleFormModal={() => toggleFormModal()} />
+            <CategoryList toggleFormModal={(item) => toggleFormModal(item)} />
           </Card>
         </div>
       </Content>
 
-      <CategoryModal show={showAddModal} toggle={toggleAddModal} />
+      <CategoryModal
+        show={showFormModal}
+        toggle={() => toggleFormModal()}
+        editItem={editItem}
+      />
     </div>
   );
 }

@@ -1,11 +1,17 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCategoryRequest } from "../../../store/slices/categorySlice";
+
 import CategoryDropdown from "./CategoryDropdown";
 
 import "./style.css";
-import { deleteCategoryRequest } from "../../../store/slices/categorySlice";
 
-function CategoryList({ data }) {
+function CategoryList({ toggleFormModal }) {
   const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.category);
+
+  const onEdit = (item) => {
+    toggleFormModal(item);
+  };
 
   const onDelete = (id) => {
     dispatch(deleteCategoryRequest(id));
@@ -22,7 +28,10 @@ function CategoryList({ data }) {
         <div className="title">{item.description}</div>
       </div>
 
-      <CategoryDropdown onEdit={() => {}} onDelete={() => onDelete(item._id)} />
+      <CategoryDropdown
+        onEdit={() => onEdit(item)}
+        onDelete={() => onDelete(item._id)}
+      />
     </div>
   ));
 }

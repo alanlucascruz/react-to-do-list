@@ -14,11 +14,16 @@ export const getCategoryRequest = (status) => async (dispatch, getState) => {
 };
 
 export const postCategoryRequest = (data) => async (dispatch) => {
-  dispatch(setStatus("sending"));
-
   const response = await api.post("/categories", data);
 
   dispatch(postCategorySuccess(response.data));
+  dispatch(setStatus("succeeded"));
+};
+
+export const putCategoryRequest = (id, data) => async (dispatch) => {
+  const response = await api.put(`/categories/${id}`, data);
+
+  dispatch(putCategorySuccess(response.data));
   dispatch(setStatus("succeeded"));
 };
 
@@ -32,7 +37,7 @@ export const category = createSlice({
   name: "category",
   initialState: {
     data: [],
-    status: "loading", // idle, loading, filtering, sending, succeeded, failed
+    status: "loading", // idle, loading, filtering, succeeded, failed
     filter: "",
   },
   reducers: {
@@ -41,6 +46,16 @@ export const category = createSlice({
     },
     postCategorySuccess: (state, action) => {
       state.data.unshift(action.payload);
+    },
+    putCategorySuccess: (state, action) => {
+      const { data } = state;
+      const { _id: id } = action.payload;
+
+      const index = data.findIndex((item) => item._id === id);
+
+      console.log(index);
+
+      data.splice(index, 1, action.payload);
     },
     deleteCategorySuccess: (state, action) => {
       const { data } = state;
@@ -61,6 +76,7 @@ export const category = createSlice({
 export const {
   getCategorySuccess,
   postCategorySuccess,
+  putCategorySuccess,
   deleteCategorySuccess,
   setStatus,
   setFilter,
