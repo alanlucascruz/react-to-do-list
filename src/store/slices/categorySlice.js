@@ -53,8 +53,6 @@ export const category = createSlice({
 
       const index = data.findIndex((item) => item._id === id);
 
-      console.log(index);
-
       data.splice(index, 1, action.payload);
     },
     deleteCategorySuccess: (state, action) => {

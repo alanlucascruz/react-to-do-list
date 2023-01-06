@@ -1,14 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  postCategoryRequest,
+  putCategoryRequest,
+} from "../../store/slices/categorySlice";
 
 import Modal from "../../components/Modal";
 import Input from "../../components/FormControl/Input";
 import RadioColor from "./RadioColor";
 import Button from "../../components/Button";
-import {
-  postCategoryRequest,
-  putCategoryRequest,
-} from "../../store/slices/categorySlice";
 
 function CategoryModal({ show, toggle, editItem }) {
   const [description, setDescription] = useState("");
@@ -16,7 +16,6 @@ function CategoryModal({ show, toggle, editItem }) {
   const [triedToSubmit, setTriedToSubmit] = useState(false);
 
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.category);
 
   const onSubmit = () => {
     setTriedToSubmit(true);
