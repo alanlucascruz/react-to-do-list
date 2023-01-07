@@ -55,7 +55,7 @@ function CategoryModal({ show, toggle, editItem }) {
       toggle={toggle}
       title="Categoria"
       body={
-        <div className="form-container">
+        <Fragment>
           <Input
             label="Descrição"
             placeholder="Informe a descrição..."
@@ -71,7 +71,7 @@ function CategoryModal({ show, toggle, editItem }) {
             showError={triedToSubmit && color === ""}
             errorMessage="Selecione uma cor (Obrigatório)"
           />
-        </div>
+        </Fragment>
       }
       footer={
         <Fragment>

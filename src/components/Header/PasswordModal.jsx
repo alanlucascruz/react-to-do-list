@@ -10,7 +10,7 @@ function PasswordModal({ show, toggle }) {
       toggle={toggle}
       title="Alterar Senha"
       body={
-        <div className="form-container">
+        <Fragment>
           <Input
             label="Antiga Senha"
             placeholder="Insira a sua antiga senha"
@@ -28,7 +28,7 @@ function PasswordModal({ show, toggle }) {
             placeholder="Confirme a nova senha"
             type="password"
           />
-        </div>
+        </Fragment>
       }
       footer={
         <Fragment>

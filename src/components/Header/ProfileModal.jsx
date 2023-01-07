@@ -10,14 +10,14 @@ function ProfileModal({ show, toggle }) {
       toggle={toggle}
       title="Editar Perfil"
       body={
-        <div className="form-container">
+        <Fragment>
           <Input label="Nome" placeholder="Insira o seu nome" />
           <Input
             label="E-mail"
             placeholder="Insira o seu e-mail"
             type="email"
           />
-        </div>
+        </Fragment>
       }
       footer={
         <Fragment>
