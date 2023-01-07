@@ -11,7 +11,9 @@ import "./style.css";
 function Tasks() {
   const [showFormModal, setShowFormModal] = useState(false);
 
-  const toggleFormModal = () => setShowFormModal(!showFormModal);
+  const toggleFormModal = () => {
+    setShowFormModal(!showFormModal);
+  };
 
   return (
     <div id="tasks">

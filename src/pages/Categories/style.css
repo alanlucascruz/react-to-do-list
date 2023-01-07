@@ -2,11 +2,6 @@
   width: 600px;
 }
 
-#categories .form-container {
-  display: flex;
-  flex-direction: column;
-}
-
 @media (max-width: 992px) {
   #categories .container {
     width: 100%;

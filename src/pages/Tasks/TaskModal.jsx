@@ -13,7 +13,7 @@ function TaskModal({ show, toggle }) {
       toggle={toggle}
       title="Tarefa"
       body={
-        <div className="form-container">
+        <Fragment>
           <Input
             label="Descrição"
             placeholder="Informe a descrição..."
@@ -53,7 +53,7 @@ function TaskModal({ show, toggle }) {
             type="date"
             placeholder="Informe a data..."
           />
-        </div>
+        </Fragment>
       }
       footer={
         <Fragment>
