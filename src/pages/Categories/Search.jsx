@@ -4,8 +4,7 @@ import {
   setFilter,
 } from "../../store/slices/categorySlice";
 
-import InputSearch from "../../components/InputSearch";
-import Button from "../../components/Button";
+import SearchBar from "../../components/SearchBar";
 
 function Search({ toggleFormModal }) {
   const dispatch = useDispatch();
@@ -21,12 +20,12 @@ function Search({ toggleFormModal }) {
   };
 
   return (
-    <div className="search-container">
-      <form onSubmit={(e) => onFilter(e)}>
-        <InputSearch value={filter} setValue={(e) => setFilterValue(e)} />
-      </form>
-      <Button text="Adicionar" onClick={toggleFormModal} />
-    </div>
+    <SearchBar
+      value={filter}
+      setValue={(e) => setFilterValue(e)}
+      onFilter={(e) => onFilter(e)}
+      toggleFormModal={toggleFormModal}
+    />
   );
 }
 

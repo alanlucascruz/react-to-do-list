@@ -3,16 +3,15 @@ import Content from "../../components/Content";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
 import TaskList from "../../components/TaskList";
-import InputSearch from "../../components/InputSearch";
-import Button from "../../components/Button";
+import SearchBar from "../../components/SearchBar";
 import TaskModal from "./TaskModal";
 
 import "./style.css";
 
 function Tasks() {
-  const [showAddModal, setShowAddModal] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
 
-  const toggleAddModal = () => setShowAddModal(!showAddModal);
+  const toggleFormModal = () => setShowFormModal(!showFormModal);
 
   return (
     <div id="tasks">
@@ -21,17 +20,13 @@ function Tasks() {
       <Content>
         <div className="container">
           <Card>
-            <div className="search-container">
-              <InputSearch />
-              <Button text="Adicionar" onClick={toggleAddModal} />
-            </div>
-
+            <SearchBar toggleFormModal={() => toggleFormModal()} />
             <TaskList showDate={true} edit={true} />
           </Card>
         </div>
       </Content>
 
-      <TaskModal toggle={toggleAddModal} show={showAddModal} />
+      <TaskModal toggle={toggleFormModal} show={showFormModal} />
     </div>
   );
 }

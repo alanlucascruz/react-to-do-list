@@ -2,13 +2,6 @@
   width: 600px;
 }
 
-#categories .search-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  gap: 8px;
-}
-
 #categories .form-container {
   display: flex;
   flex-direction: column;
