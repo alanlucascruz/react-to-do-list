@@ -23,8 +23,8 @@ function Categories() {
   }, [dispatch]);
 
   const toggleFormModal = (editItem = null) => {
-    setEditItem(editItem);
     setShowFormModal(!showFormModal);
+    setEditItem(editItem);
   };
 
   return (
