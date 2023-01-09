@@ -151,10 +151,6 @@
     align-items: flex-start;
   }
 
-  .tasks .item {
-    padding: 8px 0;
-  }
-
   .tasks .priority {
     margin-right: 16px;
   }
@@ -172,6 +168,10 @@
 }
 
 @media (max-width: 576px) {
+  .tasks .item {
+    padding: 8px 0;
+  }
+
   .tasks .item:nth-child(odd) {
     background-color: transparent;
   }
