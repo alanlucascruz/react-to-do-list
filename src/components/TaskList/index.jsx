@@ -88,6 +88,10 @@ function Tasks({ data, showDate = false, edit = false }) {
     return dateFormatted;
   };
 
+  if (!data.length) {
+    return <div className="empty">Nada encontrado</div>;
+  }
+
   return (
     <div className="tasks">
       {data.map((item, index) => (

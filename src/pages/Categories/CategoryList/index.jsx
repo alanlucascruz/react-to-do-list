@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCategoryRequest } from "../../../store/slices/categorySlice";
 
 import CategoryDropdown from "./CategoryDropdown";
+import EmptyList from "../../../components/EmptyList";
 
 import "./style.css";
 
@@ -18,7 +19,7 @@ function CategoryList({ toggleFormModal }) {
   };
 
   if (!data.length) {
-    return <div className="empty">Nada encontrado</div>;
+    return <EmptyList />;
   }
 
   return data.map((item, index) => (
