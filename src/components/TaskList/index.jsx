@@ -1,3 +1,4 @@
+import EmptyList from "../EmptyList";
 import TaskDropdown from "./TaskDropdown";
 
 import "./style.css";
@@ -89,7 +90,7 @@ function Tasks({ data, showDate = false, edit = false }) {
   };
 
   if (!data.length) {
-    return <div className="empty">Nada encontrado</div>;
+    return <EmptyList />;
   }
 
   return (
