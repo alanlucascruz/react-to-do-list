@@ -44,7 +44,7 @@ function Tasks() {
       </Content>
 
       <TaskModal
-        toggle={toggleFormModal}
+        toggle={() => toggleFormModal()}
         show={showFormModal}
         editItem={editItem}
       />

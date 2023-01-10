@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../../core/api";
 
-export const getCategoryRequest = (status) => async (dispatch, getState) => {
-  const { filter } = getState().category;
+export const getCategoryRequest =
+  (status, filter = "") =>
+  async (dispatch) => {
+    dispatch(setStatus(status));
 
-  dispatch(setStatus(status));
+    const route = filter ? `/categories/find/${filter}` : "/categories";
+    const response = await api.get(route);
 
-  const route = filter ? `/categories/find/${filter}` : "/categories";
-  const response = await api.get(route);
-
-  dispatch(getCategorySuccess(response.data));
-  dispatch(setStatus("succeeded"));
-};
+    dispatch(getCategorySuccess(response.data));
+    dispatch(setStatus("succeeded"));
+  };
 
 export const postCategoryRequest = (data) => async (dispatch) => {
   const response = await api.post("/categories", data);
@@ -38,7 +38,6 @@ export const category = createSlice({
   initialState: {
     data: [],
     status: "loading", // idle, loading, filtering, succeeded, failed
-    filter: "",
   },
   reducers: {
     getCategorySuccess: (state, action) => {
@@ -65,9 +64,6 @@ export const category = createSlice({
     setStatus: (state, action) => {
       state.status = action.payload;
     },
-    setFilter: (state, action) => {
-      state.filter = action.payload;
-    },
   },
 });
 
@@ -77,7 +73,6 @@ export const {
   putCategorySuccess,
   deleteCategorySuccess,
   setStatus,
-  setFilter,
 } = category.actions;
 
 export default category.reducer;

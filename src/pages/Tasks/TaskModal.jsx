@@ -24,7 +24,6 @@ function TaskModal({ show, toggle, editItem }) {
       !(description && category && priority && status) ||
       (status === "done" && !completedAt)
     ) {
-      console.log("Obrigatório");
       return;
     }
 
@@ -36,16 +35,14 @@ function TaskModal({ show, toggle, editItem }) {
       completed_at: completedAt,
     };
 
-    console.log(data);
+    if (editItem) {
+      const { _id: id } = editItem;
+      dispatch(putTaskRequest(id, data));
+    } else {
+      dispatch(postTaskRequest(data));
+    }
 
-    // if (editItem) {
-    //   const { _id: id } = editItem;
-    //   dispatch(putTaskRequest(id, data));
-    // } else {
-    //   dispatch(postTaskRequest(data));
-    // }
-
-    // toggle();
+    toggle();
   };
 
   const resetForm = () => {
@@ -60,13 +57,13 @@ function TaskModal({ show, toggle, editItem }) {
   useEffect(() => {
     resetForm();
 
-    // if (editItem) {
-    //   setDescription(editItem.description);
-    //   setCategory(editItem.category);
-    //   setPriority(editItem.priority);
-    //   setStatus(editItem.status);
-    //   setCompletedAt(editItem.completed_at);
-    // }
+    if (editItem) {
+      setDescription(editItem.description);
+      setCategory(editItem.category?._id);
+      setPriority(editItem.priority);
+      setStatus(editItem.status);
+      setCompletedAt(editItem.completed_at);
+    }
   }, [editItem, toggle]);
 
   useEffect(() => {

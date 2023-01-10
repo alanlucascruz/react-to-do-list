@@ -21,7 +21,7 @@ function Dashboard() {
             </Card>
 
             <Card title="Próximas Tarefas">
-              <TaskList showDate={false} showEditOption={false} />
+              {/* <TaskList showDate={false} showEditOption={false} /> */}
             </Card>
           </div>
 

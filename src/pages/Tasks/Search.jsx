@@ -1,26 +1,24 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getTaskRequest, setFilter } from "../../store/slices/taskSlice";
+import { useDispatch } from "react-redux";
+import { getTaskRequest } from "../../store/slices/taskSlice";
 
 import SearchBar from "../../components/SearchBar";
+import { useState } from "react";
 
 function Search({ toggleFormModal }) {
+  const [filter, setFilter] = useState("");
+
   const dispatch = useDispatch();
-  const { filter } = useSelector((state) => state.task);
 
-  const onFilter = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(getTaskRequest("filtering"));
-  };
-
-  const setFilterValue = (e) => {
-    dispatch(setFilter(e.target.value));
+    dispatch(getTaskRequest("filtering", filter));
   };
 
   return (
     <SearchBar
       value={filter}
-      setValue={(e) => setFilterValue(e)}
-      onFilter={(e) => onFilter(e)}
+      setValue={(e) => setFilter(e.target.value)}
+      onSubmit={(e) => onSubmit(e)}
       toggleFormModal={toggleFormModal}
     />
   );

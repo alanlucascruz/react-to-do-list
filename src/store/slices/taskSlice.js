@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../../core/api";
 
-export const getTaskRequest = (status) => async (dispatch, getState) => {
-  const { filter } = getState().task;
+export const getTaskRequest =
+  (status, filter = "") =>
+  async (dispatch) => {
+    dispatch(setStatus(status));
 
-  dispatch(setStatus(status));
+    const route = filter ? `/tasks/find/${filter}` : "/tasks";
+    const response = await api.get(route);
 
-  const route = filter ? `/tasks/find/${filter}` : "/tasks";
-  const response = await api.get(route);
-
-  dispatch(getTaskSuccess(response.data));
-  dispatch(setStatus("succeeded"));
-};
+    dispatch(getTaskSuccess(response.data));
+    dispatch(setStatus("succeeded"));
+  };
 
 export const postTaskRequest = (data) => async (dispatch) => {
   const response = await api.post("/tasks", data);
@@ -38,7 +38,6 @@ export const task = createSlice({
   initialState: {
     data: [],
     status: "loading", // idle, loading, filtering, succeeded, failed
-    filter: "",
   },
   reducers: {
     getTaskSuccess: (state, action) => {
@@ -65,9 +64,6 @@ export const task = createSlice({
     setStatus: (state, action) => {
       state.status = action.payload;
     },
-    setFilter: (state, action) => {
-      state.filter = action.payload;
-    },
   },
 });
 
@@ -77,7 +73,6 @@ export const {
   putTaskSuccess,
   deleteTaskSuccess,
   setStatus,
-  setFilter,
 } = task.actions;
 
 export default task.reducer;
