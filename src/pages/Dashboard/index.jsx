@@ -3,7 +3,7 @@ import Content from "../../components/Content";
 import Card from "../../components/Card";
 import ChartLine from "./ChartLine";
 import Categories from "./Categories";
-import TasksList from "../../components/TaskList";
+import TaskList from "../../components/TaskList";
 import "./style.css";
 
 function Dashboard() {
@@ -21,7 +21,7 @@ function Dashboard() {
             </Card>
 
             <Card title="Próximas Tarefas">
-              <TasksList />
+              <TaskList showDate={false} showEditOption={false} />
             </Card>
           </div>
 

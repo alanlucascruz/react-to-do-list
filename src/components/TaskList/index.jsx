@@ -1,59 +1,26 @@
+import { useDispatch } from "react-redux";
+import { deleteTaskRequest } from "../../store/slices/taskSlice";
+
 import EmptyList from "../EmptyList";
 import TaskDropdown from "./TaskDropdown";
 
 import "./style.css";
 
-function Tasks({ data, showDate = false, edit = false }) {
-  // const data = [
-  //   {
-  //     priority: "low",
-  //     description: "Reunião de definição e planejamento",
-  //     status: "done",
-  //     category: "Trabalho",
-  //     color: "#00c1fd",
-  //     completed_at: "Incompleto",
-  //   },
-  //   {
-  //     priority: "medium",
-  //     description: "Limpar no final de semana",
-  //     status: "pending",
-  //     category: "Casa",
-  //     color: "#00B96D",
-  //     completed_at: "10/12/2022",
-  //   },
-  //   {
-  //     priority: "low",
-  //     description: "Trabalho de Banco de Dados",
-  //     status: "progress",
-  //     category: "Faculdade",
-  //     color: "#DEBD12",
-  //     completed_at: "10/12/2022",
-  //   },
-  //   {
-  //     priority: "high",
-  //     description: "Banho no Cachorro",
-  //     status: "pending",
-  //     category: "Afazeres",
-  //     color: "#FF6B56",
-  //     completed_at: "10/12/2022",
-  //   },
-  //   {
-  //     priority: "medium",
-  //     description: "Finalizar curso de Node.JS",
-  //     status: "done",
-  //     category: "Pessoal",
-  //     color: "#7E44FF",
-  //     completed_at: "10/12/2022",
-  //   },
-  //   {
-  //     priority: "high",
-  //     description: "Finalizar curso de React (To Do List)",
-  //     status: "pending",
-  //     category: "Pessoal",
-  //     color: "#7E44FF",
-  //     completed_at: "10/12/2022",
-  //   },
-  // ];
+function TaskList({
+  data,
+  toggleFormModal,
+  showDate = true,
+  showEditOption = false,
+}) {
+  const dispatch = useDispatch();
+
+  const onEdit = (item) => {
+    toggleFormModal(item);
+  };
+
+  const onDelete = (id) => {
+    dispatch(deleteTaskRequest(id));
+  };
 
   const Priority = ({ priority }) => {
     let icon = "bi-caret-up-fill";
@@ -123,11 +90,15 @@ function Tasks({ data, showDate = false, edit = false }) {
             )}
           </div>
 
-          <TaskDropdown edit={edit} />
+          <TaskDropdown
+            editOption={showEditOption}
+            onEdit={() => onEdit(item)}
+            onDelete={() => onDelete(item._id)}
+          />
         </div>
       ))}
     </div>
   );
 }
 
-export default Tasks;
+export default TaskList;

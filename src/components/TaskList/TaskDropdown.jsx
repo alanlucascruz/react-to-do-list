@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown";
 
-function TaskDropdown({ edit }) {
+function TaskDropdown({ onEdit, onDelete, showEditOption = true }) {
   return (
     <Dropdown
       base={
@@ -12,12 +12,12 @@ function TaskDropdown({ edit }) {
       }
       content={
         <Fragment>
-          {edit && (
+          {showEditOption && (
             <Fragment>
-              <Link>
+              <Link onClick={onEdit}>
                 <i className="bi bi-pencil-square"></i> Editar
               </Link>
-              <Link>
+              <Link onClick={onDelete}>
                 <i className="bi bi-trash"></i> Excluir
               </Link>
               <div className="dropdown-divider"></div>

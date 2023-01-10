@@ -35,7 +35,10 @@ function Tasks() {
         <div className="container">
           <Card>
             <Search toggleFormModal={() => toggleFormModal()} />
-            <TaskList showDate={true} edit={true} data={data} />
+            <TaskList
+              data={data}
+              toggleFormModal={(item) => toggleFormModal(item)}
+            />
           </Card>
         </div>
       </Content>
