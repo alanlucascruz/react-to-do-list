@@ -1,5 +1,5 @@
-import { Fragment, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { postTaskRequest, putTaskRequest } from "../../store/slices/taskSlice";
 
 import Modal from "../../components/Modal";
@@ -16,6 +16,13 @@ function TaskModal({ show, toggle, editItem }) {
   const [triedToSubmit, setTriedToSubmit] = useState(false);
 
   const dispatch = useDispatch();
+  const { data: categoryData } = useSelector((state) => state.category);
+
+  const categoryOptions = useMemo(() => {
+    return categoryData?.map((item) => {
+      return { value: item._id, description: item.description };
+    });
+  }, [categoryData]);
 
   const onSubmit = () => {
     setTriedToSubmit(true);
@@ -45,14 +52,14 @@ function TaskModal({ show, toggle, editItem }) {
     toggle();
   };
 
-  const resetForm = () => {
+  const resetForm = useCallback(() => {
     setDescription("");
-    setCategory("");
+    setCategory(categoryOptions[0] || "");
     setPriority("low");
     setStatus("pending");
     setCompletedAt("");
     setTriedToSubmit(false);
-  };
+  }, [categoryOptions]);
 
   useEffect(() => {
     resetForm();
@@ -64,13 +71,19 @@ function TaskModal({ show, toggle, editItem }) {
       setStatus(editItem.status);
       setCompletedAt(editItem.completed_at);
     }
-  }, [editItem, toggle]);
+  }, [editItem, toggle, resetForm]);
 
   useEffect(() => {
     const currentDate = new Date().toISOString().slice(0, 10);
 
     status === "done" ? setCompletedAt(currentDate) : setCompletedAt("");
   }, [status]);
+
+  const categoryLabel = () => {
+    return categoryOptions?.length
+      ? "Categoria"
+      : "Categoria (Por favor, cadastre uma categoria)";
+  };
 
   return (
     <Modal
@@ -89,12 +102,8 @@ function TaskModal({ show, toggle, editItem }) {
           />
 
           <Select
-            label="Categoria"
-            options={[
-              { value: 1, description: "Trabalho" },
-              { value: 2, description: "Casa" },
-              { value: 3, description: "Faculdade" },
-            ]}
+            label={categoryLabel()}
+            options={categoryOptions}
             value={category}
             setValue={(e) => setCategory(e.target.value)}
             showError={triedToSubmit && category === ""}

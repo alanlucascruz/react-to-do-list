@@ -3,7 +3,7 @@ import Content from "../../components/Content";
 import Card from "../../components/Card";
 import ChartLine from "./ChartLine";
 import Categories from "./Categories";
-import TaskList from "../../components/TaskList";
+
 import "./style.css";
 
 function Dashboard() {

@@ -10,16 +10,19 @@ import TaskList from "../../components/TaskList";
 import TaskModal from "./TaskModal";
 
 import "./style.css";
+import { getCategoryRequest } from "../../store/slices/categorySlice";
 
 function Tasks() {
   const [showFormModal, setShowFormModal] = useState(false);
   const [editItem, setEditItem] = useState(null);
 
   const dispatch = useDispatch();
-  const { status, data } = useSelector((state) => state.task);
+  const { status: taskStatus, data } = useSelector((state) => state.task);
+  const { status: categoryStatus } = useSelector((state) => state.category);
 
   useEffect(() => {
     dispatch(getTaskRequest("loading"));
+    dispatch(getCategoryRequest("loading"));
   }, [dispatch]);
 
   const toggleFormModal = (editItem = null) => {
@@ -27,11 +30,15 @@ function Tasks() {
     setEditItem(editItem);
   };
 
+  const isLoading = () => {
+    return taskStatus === "loading" || categoryStatus === "loading";
+  };
+
   return (
     <div id="tasks">
       <Header title="Tarefas" />
 
-      <Content loading={status === "loading"}>
+      <Content loading={isLoading()}>
         <div className="container">
           <Card>
             <Search toggleFormModal={() => toggleFormModal()} />
