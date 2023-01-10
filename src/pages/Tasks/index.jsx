@@ -16,7 +16,7 @@ function Tasks() {
   const [editItem, setEditItem] = useState(null);
 
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.task);
+  const { status, data } = useSelector((state) => state.task);
 
   useEffect(() => {
     dispatch(getTaskRequest("loading"));
@@ -35,7 +35,7 @@ function Tasks() {
         <div className="container">
           <Card>
             <Search toggleFormModal={() => toggleFormModal()} />
-            <TaskList showDate={true} edit={true} />
+            <TaskList showDate={true} edit={true} data={data} />
           </Card>
         </div>
       </Content>

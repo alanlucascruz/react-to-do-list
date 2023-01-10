@@ -99,6 +99,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-right: 24px;
 }
 
 .tasks .category i {
@@ -114,7 +115,7 @@
 }
 
 .tasks .date i {
-  margin-right: 4px;
+  margin-right: 8px;
 }
 
 .tasks .options {
