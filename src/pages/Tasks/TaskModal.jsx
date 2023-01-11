@@ -30,9 +30,8 @@ function TaskModal({ show, toggle, editItem }) {
     if (
       !(description && category && priority && status) ||
       (status === "done" && !completedAt)
-    ) {
+    )
       return;
-    }
 
     const data = {
       description,
@@ -54,7 +53,7 @@ function TaskModal({ show, toggle, editItem }) {
 
   const resetForm = useCallback(() => {
     setDescription("");
-    setCategory(categoryOptions[0] || "");
+    setCategory(categoryOptions[0]?.value || "");
     setPriority("low");
     setStatus("pending");
     setCompletedAt("");
@@ -69,14 +68,12 @@ function TaskModal({ show, toggle, editItem }) {
       setCategory(editItem.category?._id);
       setPriority(editItem.priority);
       setStatus(editItem.status);
-      setCompletedAt(editItem.completed_at);
+      setCompletedAt(editItem.completed_at?.slice(0, 10) || "");
     }
   }, [editItem, toggle, resetForm]);
 
   useEffect(() => {
-    const currentDate = new Date().toISOString().slice(0, 10);
-
-    status === "done" ? setCompletedAt(currentDate) : setCompletedAt("");
+    if (!(status === "done")) setCompletedAt("");
   }, [status]);
 
   const categoryLabel = () => {

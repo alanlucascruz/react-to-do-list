@@ -50,7 +50,10 @@ function TaskList({
     var dateFormatted = "Pendente";
 
     if (date) {
-      dateFormatted = new Date(date).toLocaleDateString();
+      date = new Date(date);
+      date.setDate(date.getDate() + 1);
+
+      dateFormatted = date.toLocaleDateString();
     }
 
     return dateFormatted;
