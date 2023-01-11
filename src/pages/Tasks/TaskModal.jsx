@@ -65,12 +65,12 @@ function TaskModal({ show, toggle, editItem }) {
 
     if (editItem) {
       setDescription(editItem.description);
-      setCategory(editItem.category?._id);
+      setCategory(editItem.category?._id || categoryOptions[0]?.value);
       setPriority(editItem.priority);
       setStatus(editItem.status);
       setCompletedAt(editItem.completed_at?.slice(0, 10) || "");
     }
-  }, [editItem, toggle, resetForm]);
+  }, [editItem, toggle, resetForm, categoryOptions]);
 
   useEffect(() => {
     if (!(status === "done")) setCompletedAt("");
