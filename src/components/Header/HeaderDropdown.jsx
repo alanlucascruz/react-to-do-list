@@ -29,7 +29,7 @@ function HeaderDropdown() {
       <Dropdown
         base={
           <div className="user">
-            <h4>{user.name}</h4>
+            <h4>{user?.name}</h4>
             <i className="bi bi-person-fill"></i>
           </div>
         }
