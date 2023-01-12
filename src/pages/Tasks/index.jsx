@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTaskRequest } from "../../store/slices/taskSlice";
+import { getCategoryRequest } from "../../store/slices/categorySlice";
 
 import Content from "../../components/Content";
 import Header from "../../components/Header";
@@ -10,7 +11,6 @@ import TaskList from "../../components/TaskList";
 import TaskModal from "./TaskModal";
 
 import "./style.css";
-import { getCategoryRequest } from "../../store/slices/categorySlice";
 
 function Tasks() {
   const [showFormModal, setShowFormModal] = useState(false);

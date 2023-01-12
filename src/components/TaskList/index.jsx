@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { deleteTaskRequest } from "../../store/slices/taskSlice";
+import {
+  deleteTaskRequest,
+  putTaskRequest,
+} from "../../store/slices/taskSlice";
 
 import EmptyList from "../EmptyList";
 import TaskDropdown from "./TaskDropdown";
@@ -20,6 +23,16 @@ function TaskList({
 
   const onDelete = (id) => {
     dispatch(deleteTaskRequest(id));
+  };
+
+  const setTaskStatus = (id, status) => {
+    let completedAt = "";
+
+    if (status === "done") {
+      completedAt = new Date().toISOString().slice(0, 10);
+    }
+
+    dispatch(putTaskRequest(id, { status, completed_at: completedAt }));
   };
 
   const Priority = ({ priority }) => {
@@ -95,6 +108,7 @@ function TaskList({
             editOption={showEditOption}
             onEdit={() => onEdit(item)}
             onDelete={() => onDelete(item._id)}
+            setTaskStatus={(status) => setTaskStatus(item._id, status)}
           />
         </div>
       ))}

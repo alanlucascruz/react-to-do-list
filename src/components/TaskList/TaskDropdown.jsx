@@ -2,7 +2,12 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown";
 
-function TaskDropdown({ onEdit, onDelete, showEditOption = true }) {
+function TaskDropdown({
+  onEdit,
+  onDelete,
+  setTaskStatus,
+  showEditOption = true,
+}) {
   return (
     <Dropdown
       base={
@@ -23,13 +28,13 @@ function TaskDropdown({ onEdit, onDelete, showEditOption = true }) {
               <div className="dropdown-divider"></div>
             </Fragment>
           )}
-          <Link>
+          <Link onClick={() => setTaskStatus("pending")}>
             <i className="bi bi-circle"></i> Pendente
           </Link>
-          <Link>
+          <Link onClick={() => setTaskStatus("progress")}>
             <i className="bi bi-check2"></i> Em Progresso
           </Link>
-          <Link>
+          <Link onClick={() => setTaskStatus("done")}>
             <i className="bi bi-check2-all"></i> Completo
           </Link>
         </Fragment>
