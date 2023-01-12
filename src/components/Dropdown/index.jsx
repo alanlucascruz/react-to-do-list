@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import "./style.css";
 
-function Dropdown({ base, content, top = false }) {
+function Dropdown({ base, content, top }) {
   return (
     <Fragment>
       <div className="dropdown">

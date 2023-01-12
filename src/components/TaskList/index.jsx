@@ -9,12 +9,7 @@ import TaskDropdown from "./TaskDropdown";
 
 import "./style.css";
 
-function TaskList({
-  data,
-  toggleFormModal,
-  showEditOption = false,
-  emptyListText = "",
-}) {
+function TaskList({ data, toggleFormModal, showEditOption, emptyListText }) {
   const dispatch = useDispatch();
 
   const onEdit = (item) => {
@@ -105,10 +100,10 @@ function TaskList({
           </div>
 
           <TaskDropdown
-            editOption={showEditOption}
             onEdit={() => onEdit(item)}
             onDelete={() => onDelete(item._id)}
             setTaskStatus={(status) => setTaskStatus(item._id, status)}
+            showEditOption={showEditOption}
           />
         </div>
       ))}

@@ -45,6 +45,7 @@ function Tasks() {
             <TaskList
               data={data}
               toggleFormModal={(item) => toggleFormModal(item)}
+              showEditOption
             />
           </Card>
         </div>

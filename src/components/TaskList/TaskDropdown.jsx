@@ -2,12 +2,7 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown";
 
-function TaskDropdown({
-  onEdit,
-  onDelete,
-  setTaskStatus,
-  showEditOption = true,
-}) {
+function TaskDropdown({ onEdit, onDelete, setTaskStatus, showEditOption }) {
   return (
     <Dropdown
       base={

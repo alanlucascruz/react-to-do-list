@@ -5,7 +5,7 @@ function Button({ type, text, color, disabled, onClick }) {
     <button
       type={type || "button"}
       className={`btn btn-${color || "blue"}`}
-      disabled={disabled || false}
+      disabled={disabled}
       onClick={onClick}
     >
       {text}
