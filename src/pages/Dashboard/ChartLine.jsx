@@ -1,5 +1,7 @@
-import { Chart } from "react-chartjs-2";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+
+import { Chart } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 function ChartLine() {
@@ -8,10 +10,16 @@ function ChartLine() {
   const chartRef = useRef(null);
   const [data, setData] = useState({ datasets: [] });
 
-  const labels = useMemo(
-    () => [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-    []
-  );
+  const { data: dashboardData } = useSelector((state) => state.dashboard);
+  const { dailyProductivity: dailyProductivityData } = dashboardData;
+
+  const labels = useMemo(() => {
+    const days = dailyProductivityData.map((item) => {
+      return new Date(item._id).getDate() + 1;
+    });
+
+    return days;
+  }, [dailyProductivityData]);
 
   const options = {
     elements: {
@@ -51,8 +59,9 @@ function ChartLine() {
   };
 
   useEffect(() => {
-    const chart = chartRef.current;
+    const dataFormatted = dailyProductivityData.map((item) => item.count);
 
+    const chart = chartRef.current;
     const gradientColor = chart.ctx.createLinearGradient(0, 0, 0, 420);
     gradientColor.addColorStop(0, "rgba(1, 145, 253, 0.44)");
     gradientColor.addColorStop(0.76, "rgba(1, 145, 253, 0.01)");
@@ -61,7 +70,7 @@ function ChartLine() {
       labels: labels,
       datasets: [
         {
-          data: [7, 9, 14, 16, 12, 19, 21, 25, 27, 23, 20, 17, 19, 25, 31],
+          data: dataFormatted,
           backgroundColor: gradientColor,
           borderColor: "rgb(1, 145, 253)",
         },
@@ -69,7 +78,7 @@ function ChartLine() {
     };
 
     setData(chartData);
-  }, [labels]);
+  }, [labels, dailyProductivityData]);
 
   return <Chart ref={chartRef} type="line" data={data} options={options} />;
 }

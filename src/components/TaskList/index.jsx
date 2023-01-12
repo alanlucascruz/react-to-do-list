@@ -9,8 +9,8 @@ import "./style.css";
 function TaskList({
   data,
   toggleFormModal,
-  showDate = true,
   showEditOption = false,
+  emptyListText = "",
 }) {
   const dispatch = useDispatch();
 
@@ -60,7 +60,7 @@ function TaskList({
   };
 
   if (!data.length) {
-    return <EmptyList />;
+    return <EmptyList text={emptyListText} />;
   }
 
   return (
@@ -85,12 +85,10 @@ function TaskList({
               {item.category?.description || "Sem categoria"}
             </div>
 
-            {showDate && (
-              <div className="date" title="Data de conclusão">
-                <i className="bi bi-calendar2-event"></i>
-                {completedAtFormatted(item.completed_at)}
-              </div>
-            )}
+            <div className="date" title="Data de conclusão">
+              <i className="bi bi-calendar2-event"></i>
+              {completedAtFormatted(item.completed_at)}
+            </div>
           </div>
 
           <TaskDropdown

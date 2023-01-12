@@ -1,40 +1,16 @@
+import { useSelector } from "react-redux";
+import EmptyList from "../../components/EmptyList";
+
 function Categories() {
-  const data = [
-    {
-      tasks: 40,
-      category: "Trabalho",
-      color: "#00c1fd",
-      progress: "40%",
-    },
-    {
-      tasks: 28,
-      category: "Casa",
-      color: "#00B96D",
-      progress: "71%",
-    },
-    {
-      tasks: 17,
-      category: "Faculdade",
-      color: "#DEBD12",
-      progress: "87%",
-    },
-    {
-      tasks: 10,
-      category: "Afazeres",
-      color: "#FF6B56",
-      progress: "37%",
-    },
-    {
-      tasks: 25,
-      category: "Pessoal",
-      color: "#7E44FF",
-      progress: "62%",
-    },
-  ];
+  const { data } = useSelector((state) => state.dashboard);
+
+  if (!data.categoryProgress.length) {
+    return <EmptyList text="Ainda não há dados sufientes" />;
+  }
 
   return (
     <div className="categories">
-      {data.map((item, index) => (
+      {data.categoryProgress.map((item, index) => (
         <div
           key={index}
           className="card"
@@ -45,7 +21,10 @@ function Categories() {
           <div className="progress-bar-container">
             <div
               className="progress-bar"
-              style={{ width: item.progress, backgroundColor: item.color }}
+              style={{
+                width: item.percentage_done,
+                backgroundColor: item.color,
+              }}
             ></div>
           </div>
         </div>

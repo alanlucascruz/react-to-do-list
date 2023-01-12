@@ -1,7 +1,7 @@
 import "./style.css";
 
-function EmptyList() {
-  return <div className="empty-list">Nada encontrado</div>;
+function EmptyList({ text }) {
+  return <div className="empty-list">{text || "Nada encontrado"}</div>;
 }
 
 export default EmptyList;
