@@ -22,7 +22,7 @@ function Categories() {
             <div
               className="progress-bar"
               style={{
-                width: item.percentage_done,
+                width: `${item.percentage_done}%`,
                 backgroundColor: item.color,
               }}
             ></div>
