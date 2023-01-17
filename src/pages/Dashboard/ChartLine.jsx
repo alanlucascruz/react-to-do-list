@@ -15,7 +15,10 @@ function ChartLine() {
 
   const labels = useMemo(() => {
     const days = dailyProductivityData.map((item) => {
-      return new Date(item._id).getDate() + 1;
+      const date = new Date(item._id);
+      date.setDate(date.getDate() + 1);
+
+      return date.getDate();
     });
 
     return days;
