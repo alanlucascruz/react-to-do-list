@@ -9,7 +9,7 @@ import Button from "../../../components/Button";
 
 import "./style.css";
 
-function Login() {
+function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -110,4 +110,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { toggleSidebarMenu } from "../../store/slices/sidebarMenuSlice";
 import HeaderDropdown from "./HeaderDropdown";
+
 import "./style.css";
 
 function Header({ title }) {

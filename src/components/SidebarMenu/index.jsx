@@ -1,7 +1,8 @@
 import { Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebarMenu } from "../../store/slices/sidebarMenuSlice";
+
 import "./style.css";
 
 const SidebarMenu = () => {
